@@ -1,0 +1,27 @@
+{{> layout/header}}
+<div class="container bg-light">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">상품명</th>
+            <th scope="col">가격</th>
+            <th scope="col">재고수량</th>
+            <th scope="col">수정</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#items}}
+        <tr>
+            <th scope="row">{{id}}</th>
+            <td>{{name}}</td>
+            <td>{{#price}}{{price}}{{/price}}</td>
+            <td>{{#stockQuantity}}{{stockQuantity}}{{/stockQuantity}}</td>
+            <td><a class="btn-primary btn-sm" href="/item/{{id}}/edit">수정</a>
+            <td>
+        </tr>
+        {{/items}}
+        </tbody>
+    </table>
+</div>
+{{> layout/footer}}

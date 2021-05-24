@@ -1,0 +1,26 @@
+{{> layout/header}}
+<div class="container bg-light">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">이름</th>
+            <th scope="col">도시</th>
+            <th scope="col">주소</th>
+            <th scope="col">우편번호</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#members}}
+        <tr>
+            <th scope="row">{{id}}</th>
+            <td>{{name}}</td>
+            <td>{{#address.city}}{{address.city}}{{/address.city}}</td>
+            <td>{{#address.street}}{{address.street}}{{/address.street}}</td>
+            <td>{{#address.zipcode}}{{address.zipcode}}{{/address.zipcode}}</td>
+        </tr>
+        {{/members}}
+        </tbody>
+    </table>
+</div>
+{{> layout/footer}}

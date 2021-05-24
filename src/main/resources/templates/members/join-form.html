@@ -1,0 +1,38 @@
+{{> layout/header}}
+<div class="container bg-light">
+    <div class="page-header m-3">
+        <div class="col-md-6 col-md-offset-3">
+            <h3>회원가입</h3>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-offset-3 m-3">
+        <form role="form" method="post" action="/members/new">
+            <div class="form-group">
+                <label for="name">이름</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요">{{#memberForm.name}}{{memberForm.name}}{{/memberForm.name}}
+                <span>{{#error.name}}{{error.name}}{{/error.name}}</span>
+            </div>
+            <div class="form-group">
+                <label for="city">도시</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="도시를 입력하세요"
+                       value={{#memberForm.city}}{{memberForm.city}}{{/memberForm.city}}>
+            </div>
+            <div class="form-group">
+                <label for="street">거리</label>
+                <input type="text" class="form-control" id="street" name="street" placeholder="거리를 입력하세요"
+                       value={{#memberForm.street}}{{memberForm.street}}{{/memberForm.street}}>
+            </div>
+            <div class="form-group">
+                <label for="zipcode">우편번호</label>
+                <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호를 입력하세요"
+                       value={{#memberForm.zipcode}}{{memberForm.zipcode}}{{/memberForm.zipcode}}>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" id="join-submit" class="btn btn-primary">
+                    회원가입<i class="fa fa-check spaceLeft"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{{> layout/footer}}

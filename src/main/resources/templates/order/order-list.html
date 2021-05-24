@@ -1,0 +1,62 @@
+{{> layout/header}}
+<div class="container bg-light">
+    <form class="form-inline m-3" role="form" method="get" action="/orders">
+        <input type="text" class="form-control m-1" id="memberName" name="memberName" placeholder="회원명">
+        <select class="form-control m-1" id="orderStatus" name="orderStatus">
+            <option selected value="ORDER">ORDER</option>
+            <option value="CANCELED">CANCELED</option>
+        </select>
+        <button type="submit" id="join-submit" class="btn btn-primary m-1">
+            검색
+        </button>
+    </form>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">회원명</th>
+            <th scope="col">상품이름</th>
+            <th scope="col">주문가격</th>
+            <th scope="col">주문수량</th>
+            <th scope="col">상태</th>
+            <th scope="col">주문일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#orders}}
+        <tr>
+            <th scope="row">{{id}}</th>
+            <td>{{member.name}}</td>
+            {{#orderItems}}
+            <td>{{item.name}}</td>
+            <td>{{orderPrice}}</td>
+            <td>{{count}}</td>
+            {{/orderItems}}
+            <td>{{status}}</td>
+            <td>{{orderDate}}</td>
+            <td><a class="btn-danger btn-sm" onclick="CancelOrder(this,{{id}})">CANCEL</a>
+            <td>
+        </tr>
+        {{/orders}}
+        </tbody>
+    </table>
+</div>
+<script src='//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js'></script>
+<script>
+function CancelOrder(el,id) {
+    let element = el;
+    let status = $(element).parent().prev().prev().text()
+
+    if(status=="CANCELED"){
+        alert("이미 취소된 상품입니다.");
+    }else{
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/orders/" + id + "/cancel");
+        document.body.appendChild(form);
+        form.submit()
+    }
+}
+
+</script>
+{{> layout/footer}}

@@ -1,0 +1,25 @@
+name : Spring
+spring:
+  output:
+    ansi:
+      enabled: alwyas
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  mustache:
+    suffix: .html
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+
+loggig:
+  level:
+    root: warn
+    jpabook.jpashop.study.springboot: trave

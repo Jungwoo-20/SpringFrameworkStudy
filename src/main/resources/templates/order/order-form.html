@@ -1,0 +1,42 @@
+{{> layout/header}}
+<div class="container bg-light">
+    <div class="page-header m-3">
+        <div class="col-md-6 col-md-offset-3">
+            <h3>상품 주문</h3>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-offset-3 m-3">
+        <form role="form" method="post" action="/order">
+            <div class="form-group">
+                <label for="memberId">주문회원</label>
+                <select class="form-control" id="memberId" name="memberId">
+                    <option selected>회원선택</option>
+                    {{#members}}
+                    <option value="{{id}}">{{name}}</option>
+                    {{/members}}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="itemId">상품명</label>
+                <select class="form-control" id="itemId" name="itemId">
+                    <option selected>상품선택</option>
+                    {{#items}}
+                    <option value="{{id}}">{{name}}</option>
+                    {{/items}}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="count">수량</label>
+                <input type="text" class="form-control" id="count" name="count" placeholder="주문 수량을 입력하세요">
+            </div>
+
+            <div class="form-group text-center">
+                <button type="submit" id="join-submit" class="btn btn-primary">
+                    상품주문<i class="fa fa-check spaceLeft"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{{> layout/footer}}
