@@ -2,6 +2,7 @@ package jpabook.jpashop.service;
 
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.repository.MemberRepository;
+import jpabook.jpashop.repository.NewMemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor //constructor 생성
 public class MemberService {
-    private final MemberRepository memberRepository;
+    private final NewMemberRepository memberRepository;
 
     public Long join(Member member) {
         validateDuplicateMember(member);
@@ -31,9 +32,11 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
+    //    public Member findOne(Long MemberId) {
+//        return memberRepository.findOne(MemberId);
+//    }
     public Member findOne(Long MemberId) {
-        return memberRepository.findOne(MemberId);
+        return memberRepository.findById(MemberId).get();
     }
-
 
 }
